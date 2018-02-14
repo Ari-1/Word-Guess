@@ -60,13 +60,13 @@ class Game
 
  def promptUser
    unless (@correct_guess.include?("_") )
-     puts "\nYOU WIN! THE WORD WAS: #{@correct_word_array.join("")}"
+     puts "\nYOU WIN! THE WORD WAS: #{@correct_word_array.join("")}".green
      # if user guess all the letters correctly
       return
    end
 
    # ask the user to pick a letter
-   puts "\nGUESS A LETTER!"
+   puts "\nGUESS A LETTER!".green
    guess = gets.chomp.downcase
 
    # prints guesses to user followed by comma
@@ -74,19 +74,19 @@ class Game
 
    # let the user know if they can't have more than one letter
      if (guess.length > 1)
-       puts "\nYOU HAVE TO GUESS THE WORD OR ONE LETTER AT A TIME."
+       puts "\nYOU HAVE TO GUESS ONE LETTER AT A TIME.".red
        return promptUser
      end
 
    # let the user know it has to be a letter
    unless (guess.match(/[a-zA-Z]/))
-     puts "\nSORRY. MUST BE A LETTER"
+     puts "\nSORRY. MUST BE A LETTER".red
      return promptUser
    end
 
    # if letter guessed is already picked
    if (@no_match_guesses.include?(guess))
-     puts "\nYOU'VE ALREADY GUESSED THIS LETTER: #{guess}"
+     puts "\nYOU'VE ALREADY GUESSED THIS LETTER: #{guess}".red
      pedal_remove
      return promptUser
    end
@@ -108,7 +108,7 @@ class Game
      @failed_attempt += 1
      # if the user loses all of its chances to answer
      if (@failed_attempt == 6)
-       puts "\nSORRY! YOU LOSE, THE ANSWER IS #{@correct_word_array.join("")}!"
+       puts "\nSORRY! YOU LOSE, THE ANSWER IS #{@correct_word_array.join("").underline}!".red
        return
    else
        puts pedal_remove[@failed_attempt-1]
