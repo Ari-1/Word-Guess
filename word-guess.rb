@@ -8,7 +8,6 @@ require 'spicy-proton'
 class Game
 
  def initialize(word)
-   @correct_word = word
    @correct_word_array = word.downcase.split("")
    # This take the random word, downcase, and split letters into it's own indexes
    # or elements (interchangable right?)
