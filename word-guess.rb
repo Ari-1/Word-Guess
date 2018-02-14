@@ -135,8 +135,9 @@ while answer == "yes"
   print "\nWhat level would you like? (easy, medium, hard): "
   level = gets.chomp.downcase
 
-  until level == "easy" || level == "medium" || level == "hard"
-    puts "\nSorry. Please pick a level."
+  while !(level == "easy" || level == "medium" || level == "hard")
+    puts "\nSorry. Please pick a level:"
+    level = gets.chomp.downcase
   end
 
   case level
